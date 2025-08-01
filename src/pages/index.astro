@@ -4,8 +4,8 @@ import '../styles/global.css';
 // Component Imports
 import Button from '../components/Button.astro';
 import { getCollection } from 'astro:content';
-import PostExcerpt from '@/components/articles/PostList';
-import PostList from '@/components/articles/PostList';
+import PostExcerpt from '@/components/articles/ArticleList';
+import ArticleList from '@/components/articles/ArticleList';
 
 const posts = await getCollection('articles');
 
@@ -24,7 +24,7 @@ const posts = await getCollection('articles');
 		<div class="grid place-items-center h-screen content-center">
 			<Button>Tailwind Button in Astro!</Button>
 			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
-			<PostList posts={posts} />
+			<ArticleList posts={posts} client:load/>
 		</div>
 	</body>
 </html>

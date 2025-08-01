@@ -1,16 +1,16 @@
 import createExcerpt from "@/lib/create-excerpt";
-import { navigate } from "astro/virtual-modules/transitions-router.js";
+import { navigate } from "astro:transitions/client";
 import type { CollectionEntry } from "astro:content";
 
 export type Props = {
   posts: CollectionEntry<"articles">[];
 };
 
-export default function PostList({ posts }: Props) {
-  const handleClick = (postId: string) => {
+export default function ArticleList({ posts }: Props) {
+  const handleClick = async (postId: string) => {
     // This function can be used to handle click events if needed
     console.log(`Post clicked: /articles/${postId}`);
-    navigate(`/articles/${postId}`);
+    await navigate(`/articles/${postId}`);
   };
   return (
     <div>
